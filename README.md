@@ -8,3 +8,6 @@ A demonstration video can be found [here](https://www.youtube.com/watch?v=GoXurP
 * Randomly generated terrain using cosine interpolation
 * Movement controlled by keyboard input
 * Mathematically simulated projectiles
+
+## Monte Carlo Simulations
+Originally created for a numerical methods course, I updated these and added them here. They're simple implementations of Monte Carlo methods for finding the area of a circle and a sphere respectively.
