@@ -1,8 +1,5 @@
 % Useful variables
 radius = 1;
-t = linspace(0, 2*pi, 100);
-x = radius * sin(t);
-y = radius * cos(t);
 
 % Prepare the dots figure
 fig_dots = figure('Name', 'Dots', 'Position', [100 450 500 500]);
@@ -16,13 +13,16 @@ h = annotation('textbox',[.9 .3 .1 .2],'String','Actual: 0.7854','EdgeColor','no
 
 % Draw the circle outline
 figure(fig_dots);
+t = linspace(0, 2*pi, 100);
+x = radius * sin(t);
+y = radius * cos(t);
 line(x,y,'Color', 'red');
 axis([-1.25 1.25 -1.25 1.25]);
 
 % Prepare the counter
-total_points = 0;
+total_points = input('Number of trials: ');
 inside_points = 0;
-for i = 1:1000
+for i = 1:total_points
     % Generate random point
     px = -radius + 2*radius*rand();
     py = -radius + 2*radius*rand();
@@ -32,11 +32,9 @@ for i = 1:1000
     % Plot the dots
     if r > radius
         plot(px, py, 'b.');
-        total_points = total_points + 1;
     else
         plot(px, py, 'r.');
         inside_points = inside_points + 1;
-        total_points = total_points + 1;
     end
     
     % Trace the line
