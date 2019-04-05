@@ -23,6 +23,9 @@ end
 % Display the grid of results
 imagesc(results);
 axis off
+% Use the custom colormap function
+customMap = generateColorMap(maxiterate);
+colormap(customMap);
 
 % Iteration function
 % Performs the test z(n+1) = z(n)^2 + c
@@ -39,4 +42,21 @@ function n = iterate(z0, maxiterate)
             n = n + 1;
         end
     end
+end
+
+function map = generateColorMap(maxiterate)
+    % Color configuration
+    rStr = 0.2;
+    gStr = 0.8;
+    bStr = 1;
+    
+    % Generate the colormap for each # of iterations
+    map = zeros(maxiterate, 3);
+    for n = maxiterate:-1:2
+        p = n/maxiterate;
+        map(n, 1) = rStr * (1-p);
+        map(n, 2) = gStr * (1-p);
+        map(n, 3) = bStr * (1-p);
+    end
+    map = flip(map);
 end
